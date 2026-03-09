@@ -41,12 +41,17 @@ nav.scrolled {
 .logo-icon {
     width: 34px;
     height: 34px;
-    background: transparent;
+    background: transparent !important;
     border-radius: var(--radius-xs);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    overflow: hidden;
+}
+.logo-icon img{
+    background-color: transparent !important;
+    display: block;
 }
 
 /* Nav Links */
