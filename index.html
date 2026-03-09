@@ -1,13 +1,357 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>webernyx</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webernyx Web Solutions | Premium Software Engineering Studio</title>
+    <meta name="description" content="Delivering powerful websites and software solutions for startups and businesses at affordable pricing. Based in India.">
+    <link rel="canonical" href="https://webernyx.in/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webernyx.in/">
+    <meta property="og:title" content="Webernyx Web Solutions | Premium Software Engineering Studio">
+    <meta property="og:description" content="Delivering powerful websites and software solutions for startups and businesses at affordable pricing.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Webernyx Web Solutions",
+      "operatingSystem": "Web",
+      "applicationCategory": "BusinessApplication",
+      "offers": { "@type": "Offer", "price": "3999", "priceCurrency": "INR" },
+      "author": { "@type": "Organization", "name": "Webernyx", "location": "India" }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <div class="engineering-grid"></div>
+    <div class="noise-overlay"></div>
+
+    <!-- Cursor follower -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+<nav id="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo" aria-label="Webernyx Home">
+                <div class="logo-icon">
+                    <img src="assets/webernyxlogo.jpg" alt="Webernyx Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span>Webernyx</span>
+            </a>
+
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html" class="nav-link-item">Home</a></li>
+                <li><a href="services.html" class="nav-link-item">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link-item">Portfolio</a></li>
+                <li><a href="process.html" class="nav-link-item">Process</a></li>
+                <li><a href="pricing.html" class="nav-link-item">Pricing</a></li>
+                <li><a href="about.html" class="nav-link-item">About</a></li>
+                <li><a href="contact.html" class="nav-link-item">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode">
+                    <i class="ph ph-moon"></i>
+                </button>
+                <a href="contact.html" class="btn btn-primary nav-cta hide-mobile">
+                    <span>Start a Project</span>
+                    <i class="ph ph-arrow-up-right"></i>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span class="ham-line"></span>
+                    <span class="ham-line"></span>
+                    <span class="ham-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero container" id="home">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Available for projects</span>
+                </div>
+                <h1 class="hero-headline">
+                    Building
+                    <br>
+                    <span class="text-gradient">Digital Architecture</span>
+                    <br>
+                    for the Future.
+                </h1>
+                <p class="hero-description">Delivering powerful websites and software solutions for startups and businesses at affordable pricing. Based in India, engineering worldwide.</p>
+                <div class="hero-actions">
+                    <a href="portfolio.html" class="btn btn-primary">
+                        <span>Explore Portfolio</span>
+                        <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                    <a href="contact.html" class="btn btn-outline">
+                        <span>Get a Quote</span>
+                    </a>
+                </div>
+                <div class="hero-social">
+                    <a href="#" aria-label="GitHub"><i class="ph ph-github-logo"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="ph ph-twitter-logo"></i></a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-glow-orb orb-1"></div>
+                <div class="hero-glow-orb orb-2"></div>
+
+                <!-- Main central card -->
+                <div class="hero-center-card floating-1">
+                    <div class="hcc-header">
+                        <div class="hcc-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span class="hcc-title">webernyx.js</span>
+                    </div>
+                    <div class="hcc-body">
+                        <p><span class="c-kw">const</span> <span class="c-var">client</span> = <span class="c-fn">connect</span>();</p>
+                        <p><span class="c-kw">await</span> <span class="c-var">project</span>.<span class="c-fn">build</span>({</p>
+                        <p class="indent"><span class="c-str">stack</span>: <span class="c-val">'fullstack'</span>,</p>
+                        <p class="indent"><span class="c-str">speed</span>: <span class="c-val">'99'</span>,</p>
+                        <p class="indent"><span class="c-str">quality</span>: <span class="c-val">'premium'</span></p>
+                        <p>});</p>
+                    </div>
+                </div>
+
+                <!-- Stats card -->
+                <div class="ui-panel panel-metric floating-2">
+                    <div class="metric-label">Performance</div>
+                    <div class="metric-value">99<span>%</span></div>
+                    <div class="metric-bar"><div class="metric-fill" style="width: 99%"></div></div>
+                </div>
+
+                <!-- Status card -->
+                <div class="ui-panel panel-status floating-3">
+                    <div class="status-row">
+                        <span class="status-dot active"></span>
+                        <span>Build deployed</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-dot warning"></span>
+                        <span>2 PRs pending</span>
+                    </div>
+                </div>
+
+                <!-- Floating tech badge -->
+                <div class="ui-panel panel-tech floating-1" style="animation-delay: 0.5s;">
+                    <i class="devicon-react-original colored"></i>
+                    <i class="devicon-nextjs-plain"></i>
+                    <i class="devicon-nodejs-plain colored"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- MARQUEE STRIP -->
+        <div class="marquee-section">
+            <div class="marquee-track">
+                <div class="marquee-content">
+                    <span>React</span><span class="sep">✦</span>
+                    <span>Next.js</span><span class="sep">✦</span>
+                    <span>Node.js</span><span class="sep">✦</span>
+                    <span>Flutter</span><span class="sep">✦</span>
+                    <span>Django</span><span class="sep">✦</span>
+                    <span>Supabase</span><span class="sep">✦</span>
+                    <span>PostgreSQL</span><span class="sep">✦</span>
+                    <span>Docker</span><span class="sep">✦</span>
+                    <span>MongoDB</span><span class="sep">✦</span>
+                    <span>Firebase</span><span class="sep">✦</span>
+                    <span>Tailwind</span><span class="sep">✦</span>
+                    <span>TypeScript</span><span class="sep">✦</span>
+                    <!-- Duplicate for seamless loop -->
+                    <span>React</span><span class="sep">✦</span>
+                    <span>Next.js</span><span class="sep">✦</span>
+                    <span>Node.js</span><span class="sep">✦</span>
+                    <span>Flutter</span><span class="sep">✦</span>
+                    <span>Django</span><span class="sep">✦</span>
+                    <span>Supabase</span><span class="sep">✦</span>
+                    <span>PostgreSQL</span><span class="sep">✦</span>
+                    <span>Docker</span><span class="sep">✦</span>
+                    <span>MongoDB</span><span class="sep">✦</span>
+                    <span>Firebase</span><span class="sep">✦</span>
+                    <span>Tailwind</span><span class="sep">✦</span>
+                    <span>TypeScript</span><span class="sep">✦</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- STATS -->
+        <section class="trust-section" id="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card reveal">
+                        <div class="stat-icon"><i class="ph ph-rocket-launch"></i></div>
+                        <h2 class="counter" data-target="20">0</h2>
+                        <p>Projects Shipped</p>
+                    </div>
+                    <div class="stat-card reveal" style="transition-delay: 0.1s">
+                        <div class="stat-icon"><i class="ph ph-stack"></i></div>
+                        <h2 class="counter" data-target="10">0</h2>
+                        <p>Technologies</p>
+                    </div>
+                    <div class="stat-card reveal" style="transition-delay: 0.2s">
+                        <div class="stat-icon"><i class="ph ph-users-three"></i></div>
+                        <h2 class="counter" data-target="100">0</h2>
+                        <p>Client Satisfaction</p>
+                    </div>
+                    <div class="stat-card reveal" style="transition-delay: 0.3s">
+                        <div class="stat-icon"><i class="ph ph-headset"></i></div>
+                        <h2 class="counter" data-target="24">0</h2>
+                        <p>Hour Support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES PREVIEW -->
+        <section class="services-preview container" id="services">
+            <div class="section-label">What We Do</div>
+            <h2 class="section-title">Services Built to <span class="text-gradient">Scale</span></h2>
+            <div class="services-grid">
+                <div class="service-card reveal glass-card">
+                    <div class="sc-icon"><i class="ph ph-globe"></i></div>
+                    <h3>Web Development</h3>
+                    <p>High-performance websites and web apps engineered for speed, SEO, and conversion.</p>
+                    <a href="services.html" class="sc-link">Learn more <i class="ph ph-arrow-right"></i></a>
+                </div>
+                <div class="service-card reveal glass-card" style="transition-delay: 0.1s">
+                    <div class="sc-icon"><i class="ph ph-device-mobile"></i></div>
+                    <h3>Mobile Apps</h3>
+                    <p>Cross-platform Flutter applications that deliver native experiences on iOS & Android.</p>
+                    <a href="services.html" class="sc-link">Learn more <i class="ph ph-arrow-right"></i></a>
+                </div>
+                <div class="service-card reveal glass-card" style="transition-delay: 0.2s">
+                    <div class="sc-icon"><i class="ph ph-cloud"></i></div>
+                    <h3>Backend & APIs</h3>
+                    <p>Scalable server infrastructure, REST & GraphQL APIs, and cloud deployments.</p>
+                    <a href="services.html" class="sc-link">Learn more <i class="ph ph-arrow-right"></i></a>
+                </div>
+                <div class="service-card reveal glass-card" style="transition-delay: 0.3s">
+                    <div class="sc-icon"><i class="ph ph-paint-brush"></i></div>
+                    <h3>UI/UX Design</h3>
+                    <p>Product design that balances beauty and usability — turning ideas into pixel-perfect interfaces.</p>
+                    <a href="services.html" class="sc-link">Learn more <i class="ph ph-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECH STACK -->
+        <section class="tech-stack container" id="tech">
+            <div class="section-label">Our Stack</div>
+            <h2 class="section-title">Technologies We <span class="text-gradient">Master</span></h2>
+            <div class="tech-grid">
+                <div class="tech-item reveal" title="React"><i class="devicon-react-original colored"></i><span>React</span></div>
+                <div class="tech-item reveal" title="Next.js" style="transition-delay:0.05s"><i class="devicon-nextjs-plain"></i><span>Next.js</span></div>
+                <div class="tech-item reveal" title="Tailwind" style="transition-delay:0.1s"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></div>
+                <div class="tech-item reveal" title="Node.js" style="transition-delay:0.15s"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+                <div class="tech-item reveal" title="Django" style="transition-delay:0.2s"><i class="devicon-django-plain"></i><span>Django</span></div>
+                <div class="tech-item reveal" title="Flutter" style="transition-delay:0.25s"><i class="devicon-flutter-plain colored"></i><span>Flutter</span></div>
+                <div class="tech-item reveal" title="Supabase" style="transition-delay:0.3s"><i class="devicon-supabase-plain colored"></i><span>Supabase</span></div>
+                <div class="tech-item reveal" title="PostgreSQL" style="transition-delay:0.35s"><i class="devicon-postgresql-plain colored"></i><span>Postgres</span></div>
+                <div class="tech-item reveal" title="MongoDB" style="transition-delay:0.4s"><i class="devicon-mongodb-plain colored"></i><span>MongoDB</span></div>
+                <div class="tech-item reveal" title="Firebase" style="transition-delay:0.45s"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
+                <div class="tech-item reveal" title="Docker" style="transition-delay:0.5s"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+                <div class="tech-item reveal" title="Git" style="transition-delay:0.55s"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-card reveal">
+                    <div class="cta-glow"></div>
+                    <div class="cta-content">
+                        <div class="section-label">Ready to build?</div>
+                        <h2>Let's Create Something <span class="text-gradient">Extraordinary</span></h2>
+                        <p>Join startups and businesses who trust Webernyx to build their digital presence. Starting from ₹3,999.</p>
+                        <div class="cta-actions">
+                            <a href="contact.html" class="btn btn-primary btn-lg">
+                                <span>Start Your Project</span>
+                                <i class="ph ph-arrow-up-right"></i>
+                            </a>
+                            <a href="pricing.html" class="btn btn-outline btn-lg">View Pricing</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M2 2L10 18L18 2" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 10H15" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <span>Webernyx</span>
+                </a>
+                <p>Premium software engineering studio based in India, building for the world.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="process.html">Our Process</a>
+                    <a href="portfolio.html">Portfolio</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="services.html">Web Dev</a>
+                    <a href="services.html">Mobile Apps</a>
+                    <a href="services.html">UI/UX Design</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="contact.html">Get in Touch</a>
+                    <a href="https://wa.me/919999999999" target="_blank" rel="noopener">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Webernyx Web Solutions. All rights reserved.</p>
+                <p>Made with <i class="ph ph-heart-fill" style="color: var(--primary)"></i> in India</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919999999999" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <i class="ph ph-whatsapp-logo"></i>
+    </a>
+
+    <script src="js/theme.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
 </html>

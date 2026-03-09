@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Webernyx Web Solutions</title>
+    <meta name="description" content="Selected case studies showcasing high-performance digital products engineered by Webernyx.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .page-hero {
+            padding-top: 160px;
+            padding-bottom: 4rem;
+            text-align: center;
+            position: relative;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 600px; height: 400px;
+            background: radial-gradient(ellipse, hsla(261, 100%, 65%, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .page-hero h1 { margin-bottom: 1rem; }
+        .page-hero p { margin: 0 auto; max-width: 52ch; font-size: 1.05rem; }
+
+        /* FILTER TABS */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 18px;
+            border-radius: var(--radius-full);
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85rem;
+            font-family: var(--font-body);
+            transition: var(--transition-fast);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 14px hsla(261, 84%, 52%, 0.3);
+        }
+
+        /* PROJECT GRID */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5px;
+            background: var(--border-subtle);
+            border: 1.5px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .project-card {
+            background: var(--card);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 16 / 10;
+            transition: var(--transition-base);
+        }
+
+        /* Placeholder gradient bg when no image */
+        .project-card .project-bg {
+            position: absolute;
+            inset: 0;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-bg-pattern {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: 0.4;
+        }
+
+        .project-bg-icon {
+            font-size: 4rem;
+            color: var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-image {
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+            opacity: 0.85;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.06);
+            opacity: 1;
+        }
+
+        /* Overlay */
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, hsla(230, 16%, 5%, 0.95) 0%, hsla(230, 16%, 5%, 0.4) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: var(--transition-base);
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Always show title at bottom even without hover */
+        .project-footer {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 1.2rem 1.8rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .project-title-static {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .project-tag {
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+        }
+
+        .project-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-desc {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1rem;
+            max-width: none;
+        }
+
+        .project-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            color: hsl(230, 16%, 6%);
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 700;
+            width: fit-content;
+            transition: var(--transition-fast);
+        }
+
+        .project-link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        /* HIDDEN STATE for filter */
+        .project-card.hidden {
+            display: none;
+        }
+
+        /* STATS ROW */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5px;
+            background: var(--border-subtle);
+            border: 1.5px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .stat-mini {
+            background: var(--card);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .stat-mini .num {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-mini p {
+            font-size: 0.82rem;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="engineering-grid"></div>
+    <div class="noise-overlay"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+<nav id="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo" aria-label="Webernyx Home">
+                <div class="logo-icon">
+                    <img src="assets/webernyxlogo.jpg" alt="Webernyx Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span>Webernyx</span>
+            </a>
+
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html" class="nav-link-item">Home</a></li>
+                <li><a href="services.html" class="nav-link-item">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link-item">Portfolio</a></li>
+                <li><a href="process.html" class="nav-link-item">Process</a></li>
+                <li><a href="pricing.html" class="nav-link-item">Pricing</a></li>
+                <li><a href="about.html" class="nav-link-item">About</a></li>
+                <li><a href="contact.html" class="nav-link-item">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode">
+                    <i class="ph ph-moon"></i>
+                </button>
+                <a href="contact.html" class="btn btn-primary nav-cta hide-mobile">
+                    <span>Start a Project</span>
+                    <i class="ph ph-arrow-up-right"></i>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span class="ham-line"></span>
+                    <span class="ham-line"></span>
+                    <span class="ham-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <main>
+        <div class="container">
+            <header class="page-hero">
+                <div class="section-label reveal">Our Work</div>
+                <h1 class="reveal">Selected <span class="text-gradient">Case Studies</span></h1>
+                <p class="reveal">A look at how we engineer digital solutions for speed, scale, and usability across industries.</p>
+            </header>
+
+            <!-- FILTER -->
+            <div class="filter-bar reveal">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="webapp">Applications</button>
+                <button class="filter-btn" data-filter="website">Websites</button>
+                <button class="filter-btn" data-filter="automation">Automation</button>
+            </div>
+
+            <!-- GRID -->
+            <div class="portfolio-grid" id="project-grid">
+
+                <div class="project-card reveal" data-category="webapp">
+                    <div class="project-bg">
+                        <div class="project-bg-pattern"></div>
+                        <i class="ph ph-calendar-dots project-bg-icon"></i>
+                    </div>
+                    <img src="assets/images/portfolio/tharang.webp" alt="Tharang" class="project-image" onerror="this.style.display='none'">
+                    <div class="project-footer">
+                        <span class="project-title-static">Tharang</span>
+                    </div>
+                    <div class="project-overlay">
+                        <div class="project-tags">
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">Scalable Architecture</span>
+                        </div>
+                        <h3 class="project-title">Tharang</h3>
+                        <p class="project-desc">A high-performance digital ecosystem engineered for event orchestration and audience engagement at scale.</p>
+                        <a href="#" class="project-link-btn">View Project <i class="ph ph-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" style="transition-delay:0.06s" data-category="website">
+                    <div class="project-bg">
+                        <div class="project-bg-pattern"></div>
+                        <i class="ph ph-globe project-bg-icon"></i>
+                    </div>
+                    <img src="assets/images/portfolio/rythva.webp" alt="Rythva" class="project-image" onerror="this.style.display='none'">
+                    <div class="project-footer">
+                        <span class="project-title-static">Rythva</span>
+                    </div>
+                    <div class="project-overlay">
+                        <div class="project-tags">
+                            <span class="project-tag">Full-Stack</span>
+                            <span class="project-tag">SEO Engineering</span>
+                        </div>
+                        <h3 class="project-title">Rythva</h3>
+                        <p class="project-desc">An integrated digital presence focused on technical SEO and conversion-rate optimization.</p>
+                        <a href="#" class="project-link-btn">View Project <i class="ph ph-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" style="transition-delay:0.12s" data-category="automation">
+                    <div class="project-bg">
+                        <div class="project-bg-pattern"></div>
+                        <i class="ph ph-gear-six project-bg-icon"></i>
+                    </div>
+                    <img src="assets/images/portfolio/staffo.webp" alt="Staffo" class="project-image" onerror="this.style.display='none'">
+                    <div class="project-footer">
+                        <span class="project-title-static">Staffo</span>
+                    </div>
+                    <div class="project-overlay">
+                        <div class="project-tags">
+                            <span class="project-tag">Internal Tooling</span>
+                            <span class="project-tag">Workflow Automation</span>
+                        </div>
+                        <h3 class="project-title">Staffo</h3>
+                        <p class="project-desc">A custom internal management system engineered to eliminate manual overhead and operational friction.</p>
+                        <a href="#" class="project-link-btn">View Project <i class="ph ph-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" style="transition-delay:0.18s" data-category="webapp">
+                    <div class="project-bg">
+                        <div class="project-bg-pattern"></div>
+                        <i class="ph ph-broadcast project-bg-icon"></i>
+                    </div>
+                    <img src="assets/images/portfolio/electrocomm.webp" alt="Electrocomm" class="project-image" onerror="this.style.display='none'">
+                    <div class="project-footer">
+                        <span class="project-title-static">Electrocomm</span>
+                    </div>
+                    <div class="project-overlay">
+                        <div class="project-tags">
+                            <span class="project-tag">System Design</span>
+                            <span class="project-tag">API Integration</span>
+                        </div>
+                        <h3 class="project-title">Electrocomm</h3>
+                        <p class="project-desc">A robust technical interface for communications infrastructure management and real-time monitoring.</p>
+                        <a href="#" class="project-link-btn">View Project <i class="ph ph-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- STATS ROW -->
+            <section style="padding: 5rem 0 0;">
+                <div class="stats-row">
+                    <div class="stat-mini reveal">
+                        <span class="num">20+</span>
+                        <p>Projects Delivered</p>
+                    </div>
+                    <div class="stat-mini reveal" style="transition-delay:0.08s">
+                        <span class="num">100%</span>
+                        <p>Client Satisfaction</p>
+                    </div>
+                    <div class="stat-mini reveal" style="transition-delay:0.16s">
+                        <span class="num">95+</span>
+                        <p>Avg Lighthouse Score</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-card reveal">
+                    <div class="cta-glow"></div>
+                    <div class="cta-content">
+                        <div class="section-label">Next project?</div>
+                        <h2>Ready to Be Our Next <span class="text-gradient">Case Study</span>?</h2>
+                        <p>Let's discuss how we can engineer your product's growth and build something worth showcasing.</p>
+                        <div class="cta-actions">
+                            <a href="contact.html" class="btn btn-primary btn-lg"><span>Start a Project</span><i class="ph ph-arrow-up-right"></i></a>
+                            <a href="pricing.html" class="btn btn-outline btn-lg">View Pricing</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M2 2L10 18L18 2" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 10H15" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <span>Webernyx</span>
+                </a>
+                <p>Premium software engineering studio based in India, building for the world.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="process.html">Our Process</a>
+                    <a href="portfolio.html">Portfolio</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="services.html">Web Dev</a>
+                    <a href="services.html">Mobile Apps</a>
+                    <a href="services.html">UI/UX Design</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="contact.html">Get in Touch</a>
+                    <a href="https://wa.me/919999999999" target="_blank" rel="noopener">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Webernyx Web Solutions. All rights reserved.</p>
+                <p>Made with <i class="ph ph-heart-fill" style="color: var(--primary)"></i> in India</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919999999999" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <i class="ph ph-whatsapp-logo"></i>
+    </a>
+
+    <script src="js/theme.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script>
+        {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projects = document.querySelectorAll('.project-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const filter = btn.dataset.filter;
+
+                    projects.forEach(card => {
+                        const match = filter === 'all' || card.dataset.category === filter;
+                        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                        if (match) {
+                            card.style.display = '';
+                            requestAnimationFrame(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = '';
+                            });
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.96)';
+                            setTimeout(() => { card.style.display = 'none'; }, 300);
+                        }
+                    });
+                });
+            });
+        }
+    </script>
+</body>
+</html>
