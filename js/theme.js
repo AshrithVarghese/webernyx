@@ -42,7 +42,7 @@ const initTheme = () => {
         setTheme(savedTheme);
     } else {
         // Fallback to dark (Signature Webernyx look)
-        setTheme('dark');
+        setTheme('light');
     }
 };
 

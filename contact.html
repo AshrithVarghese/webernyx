@@ -357,9 +357,8 @@
                     </div>
 
                     <div class="social-row">
-                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="https://www.linkedin.com/company/webernyx" class="social-link" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
                         <a href="#" class="social-link" aria-label="Twitter"><i class="ph ph-twitter-logo"></i></a>
-                        <a href="#" class="social-link" aria-label="GitHub"><i class="ph ph-github-logo"></i></a>
                         <a href="https://www.instagram.com/webernyx.in" class="social-link" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
                     </div>
                 </aside>
@@ -373,7 +372,10 @@
 
                     <div id="form-status" class="form-status"></div>
 
-                    <form id="contact-form" novalidate>
+                    <form id="contact-form" action="https://formsubmit.co/webernyx@gmail.com" method="POST" novalidate>
+                        <input type="hidden" name="_subject" value="New Webernyx Project Inquiry!">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Full Name</label>
@@ -383,28 +385,32 @@
                                 <label for="email">Email Address</label>
                                 <input type="email" id="email" name="email" placeholder="john@company.com" required>
                             </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000" required>
+                            </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="project-type">Project Type</label>
                                 <select id="project-type" name="project-type">
-                                    <option value="">Select type...</option>
-                                    <option value="website">Custom Website</option>
-                                    <option value="webapp">Web Application</option>
-                                    <option value="mobile">Mobile App</option>
-                                    <option value="uiux">UI/UX Design</option>
-                                    <option value="automation">Business Automation</option>
-                                    <option value="other">Other</option>
+                                <option value="">Select type...</option>
+                                <option value="Custom Website">Custom Website</option>
+                                <option value="Web Application">Web Application</option>
+                                <option value="Mobile App">Mobile App</option>
+                                <option value="UI/UX Design">UI/UX Design</option>
+                                <option value="Business Automation">Business Automation</option>
+                                <option value="Other">Other</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="budget">Budget Range</label>
                                 <select id="budget" name="budget">
                                     <option value="">Select budget...</option>
-                                    <option value="low">₹3k – ₹8k</option>
-                                    <option value="mid">₹8k – ₹20k</option>
-                                    <option value="high">₹20k+</option>
+                                    <option value="₹3k – ₹8k">₹3k – ₹8k</option>
+                                    <option value="₹8k – ₹20k">₹8k – ₹20k</option>
+                                    <option value="₹20k+">₹20k+</option>
                                 </select>
                             </div>
                         </div>
